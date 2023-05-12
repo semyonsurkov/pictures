@@ -6,7 +6,7 @@ export default defineConfig({
     outDir: path.resolve(__dirname, 'dist'),
     assetsDir: 'assets',
   },
-  publicDir: 'src',
+  publicDir: '',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),
