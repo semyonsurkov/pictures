@@ -2,23 +2,25 @@ export const modals = () => {
   let buttonPressed = false;
 
   const bindModal = (
-    triggersSelector,
-    modalSelector,
-    closeSelector,
+    triggersSelector: string,
+    modalSelector: string,
+    closeSelector: string,
     destroy = false
   ) => {
     const triggers = document.querySelectorAll(triggersSelector);
-    const modal = document.querySelector(modalSelector);
-    const close = document.querySelector(closeSelector);
-    const windows = document.querySelectorAll('[data-modal]');
+    const modal: HTMLElement | null = document.querySelector(modalSelector);
+    const close: HTMLElement | null = document.querySelector(closeSelector);
+    const windows = document.querySelectorAll<HTMLElement>('[data-modal]');
     const scroll = calcScroll();
 
     const closeModal = () => {
+      if (!modal) return;
       modal.style.display = 'none';
       document.body.style.overflow = '';
     };
 
     const openModal = () => {
+      if (!modal) return;
       modal.style.display = 'block';
       document.body.style.overflow = 'hidden';
     };
@@ -45,7 +47,7 @@ export const modals = () => {
       });
     });
 
-    close.addEventListener('click', () => {
+    close?.addEventListener('click', () => {
       windows.forEach((window) => {
         window.style.display = 'none';
       });
@@ -53,7 +55,7 @@ export const modals = () => {
       document.body.style.marginRight = `0px`;
     });
 
-    modal.addEventListener('click', (e) => {
+    modal?.addEventListener('click', (e) => {
       if (e.target === modal) {
         windows.forEach((window) => {
           window.style.display = 'none';
@@ -65,24 +67,25 @@ export const modals = () => {
     });
 
     document.addEventListener('keydown', (e) => {
-      if (e.code === 'Escape' && modal.style.display === 'block') {
+      if (e.code === 'Escape' && modal?.style.display === 'block') {
         closeModal();
       }
     });
   };
 
-  const showModalByTime = (selector, time) => {
+  const showModalByTime = (selector: string, time: number) => {
     setTimeout(() => {
-      let display;
+      let display: string | null = null;
 
-      document.querySelectorAll('[data-modal]').forEach((item) => {
-        if (getComputedStyle(item).display != 'none') {
+      document.querySelectorAll<HTMLElement>('[data-modal]').forEach((item) => {
+        if (getComputedStyle(item).display !== 'none') {
           display = 'block';
         }
       });
 
-      if (!display) {
-        document.querySelector(selector).style.display = 'block';
+      const targetElement = document.querySelector<HTMLElement>(selector);
+      if (!display && targetElement) {
+        targetElement.style.display = 'block';
         document.body.style.overflow = 'hidden';
         let scroll = calcScroll();
         document.body.style.marginRight = `${scroll}px`;
@@ -105,7 +108,7 @@ export const modals = () => {
     return scrollWidth;
   };
 
-  const openByScroll = (selector) => {
+  const openByScroll = (selector: string) => {
     window.addEventListener('scroll', () => {
       let scrollHeight = Math.max(
         document.documentElement.scrollHeight,
@@ -117,7 +120,7 @@ export const modals = () => {
         window.pageYOffset + document.documentElement.clientHeight >=
           scrollHeight
       ) {
-        document.querySelector(selector).click();
+        (document.querySelector(selector) as HTMLElement).click();
       }
     });
   };
