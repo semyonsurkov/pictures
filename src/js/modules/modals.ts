@@ -20,15 +20,14 @@ export const modals = () => {
     const close: HTMLElement | null = document.querySelector(closeSelector);
     const windows = document.querySelectorAll<HTMLElement>('[data-modal]');
     const scroll = calcScroll();
+    if (!modal) return;
 
     const closeModal = () => {
-      if (!modal) return;
       modal.style.display = 'none';
       document.body.style.overflow = '';
     };
 
     const openModal = () => {
-      if (!modal) return;
       modal.style.display = 'block';
       document.body.style.overflow = 'hidden';
     };
