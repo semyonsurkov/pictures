@@ -1,12 +1,20 @@
 export const modals = () => {
   let buttonPressed = false;
 
-  const bindModal = (
-    triggersSelector: string,
-    modalSelector: string,
-    closeSelector: string,
-    destroy = false
-  ) => {
+  interface BindModalParams {
+    triggersSelector: string;
+    modalSelector: string;
+    closeSelector: string;
+    destroy?: boolean;
+  }
+
+  const bindModal = (params: BindModalParams) => {
+    const {
+      triggersSelector,
+      modalSelector,
+      closeSelector,
+      destroy = false,
+    } = params;
     const triggers = document.querySelectorAll(triggersSelector);
     const modal: HTMLElement | null = document.querySelector(modalSelector);
     const close: HTMLElement | null = document.querySelector(closeSelector);
@@ -125,13 +133,24 @@ export const modals = () => {
     });
   };
 
-  bindModal('.button-design', '.popup-design', '.popup-design .popup-close');
-  bindModal(
-    '.button-consultation',
-    '.popup-consultation',
-    '.popup-consultation .popup-close'
-  );
-  bindModal('.fixed-gift', '.popup-gift', '.popup-gift .popup-close', true);
+  bindModal({
+    triggersSelector: '.button-design',
+    modalSelector: '.popup-design',
+    closeSelector: '.popup-design .popup-close',
+  });
+
+  bindModal({
+    triggersSelector: '.button-consultation',
+    modalSelector: '.popup-consultation',
+    closeSelector: '.popup-consultation .popup-close',
+  });
+
+  bindModal({
+    triggersSelector: '.fixed-gift',
+    modalSelector: '.popup-gift',
+    closeSelector: '.popup-gift .popup-close',
+    destroy: true,
+  });
   openByScroll('.fixed-gift');
   showModalByTime('.popup-consultation', 60000);
 };
