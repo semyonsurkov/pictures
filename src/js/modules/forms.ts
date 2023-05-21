@@ -70,20 +70,20 @@ export const forms = (): void => {
         form.style.display = 'none';
       }, 400);
 
-      let statusImg = document.createElement('img');
+      const statusImg = document.createElement('img');
       statusImg.setAttribute('src', message.spinner);
       statusImg.classList.add('animated', 'fadeInUp');
       statusMessage.appendChild(statusImg);
 
-      let textMessage = document.createElement('div');
+      const textMessage = document.createElement('div');
       textMessage.textContent = message.loading;
       statusMessage.appendChild(textMessage);
 
       const formData = new FormData(form);
-      let api;
-      form.closest('.popup-design') || form.classList.contains('calc_form')
-        ? (api = path.designer)
-        : (api = path.question);
+      const api =
+        form.closest('.popup-design') || form.classList.contains('calc_form')
+          ? path.designer
+          : path.question;
       console.log(api);
 
       postData('https://simple-server-cumz.onrender.com/api/data', formData)
