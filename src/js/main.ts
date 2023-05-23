@@ -1,4 +1,11 @@
-import { modals, sliders, forms } from './modules';
+import {
+  modals,
+  sliders,
+  forms,
+  mask,
+  checkTextInputs,
+  showMoreElements,
+} from './modules';
 
 window.addEventListener('DOMContentLoaded', () => {
   modals();
@@ -10,4 +17,8 @@ window.addEventListener('DOMContentLoaded', () => {
   );
   sliders('.main-slider-item', 'vertical');
   forms();
+  mask('[name="phone"]');
+  checkTextInputs('[name="name"]');
+  checkTextInputs('[name="message"]');
+  showMoreElements('.button-styles', '.styles-2');
 });
