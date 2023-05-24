@@ -20,6 +20,7 @@ export const postData = async (
 
 export const getData = async (url: string): Promise<CardData[]> => {
   let result = await fetch(url);
+  console.log(result)
 
   if (!result.ok) {
     throw new Error(`Could not fetch ${url}, status: ${result.status}`);

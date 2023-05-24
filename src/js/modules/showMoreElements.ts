@@ -10,7 +10,7 @@ export const showMoreElements = (trigger: string, wrapper: string): void => {
   const btn: Element | null = document.querySelector(trigger);
 
   btn?.addEventListener('click', function (this: Element) {
-    getData('src/assets/db.json')
+    getData('./db.json')
       .then((data: { styles: CardData[] }) => createCards(data.styles))
       .catch((error: Error) => console.log(error));
 
