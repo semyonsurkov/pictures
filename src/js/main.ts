@@ -22,5 +22,11 @@ window.addEventListener('DOMContentLoaded', () => {
   checkTextInputs('[name="name"]');
   checkTextInputs('[name="message"]');
   showMoreElements('.button-styles', '#styles .row');
-  calculator('#size', '#material', '#options', '.promocode', '.calc-price');
+  calculator({
+    size: '#size',
+    material: '#material',
+    options: '#options',
+    promocode: '.promocode',
+    result: '.calc-price',
+  });
 });

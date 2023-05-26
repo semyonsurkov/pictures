@@ -1,10 +1,13 @@
-export const calculator = (
-  size: string,
-  material: string,
-  options: string,
-  promocode: string,
-  result: string
-): void => {
+interface CalculatorArgs {
+  size: string;
+  material: string;
+  options: string;
+  promocode: string;
+  result: string;
+}
+
+export const calculator = (args: CalculatorArgs): void => {
+  const { size, material, options, promocode, result } = args;
   const sizeBlock: HTMLInputElement | null = document.querySelector(size);
   const materialBlock: HTMLInputElement | null =
     document.querySelector(material);
