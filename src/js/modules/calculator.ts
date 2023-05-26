@@ -9,11 +9,9 @@ interface CalculatorArgs {
 export const calculator = (args: CalculatorArgs): void => {
   const { size, material, options, promocode, result } = args;
   const sizeBlock: HTMLInputElement | null = document.querySelector(size);
-  const materialBlock: HTMLInputElement | null =
-    document.querySelector(material);
+  const materialBlock: HTMLInputElement | null = document.querySelector(material);
   const optionsBlock: HTMLInputElement | null = document.querySelector(options);
-  const promocodeBlock: HTMLInputElement | null =
-    document.querySelector(promocode);
+  const promocodeBlock: HTMLInputElement | null = document.querySelector(promocode);
   const resultBlock: HTMLElement | null = document.querySelector(result);
 
   let sum = 0;
