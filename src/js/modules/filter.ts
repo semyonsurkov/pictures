@@ -1,6 +1,6 @@
 export const filter = () => {
   const menu = document.querySelector('.portfolio-menu') as HTMLElement;
-  const items = menu?.querySelectorAll('li');
+  const items = menu?.querySelectorAll('li'); 
   const btnAll = menu?.querySelector('.all');
   const btnLovers = menu?.querySelector('.lovers');
   const btnChef = menu?.querySelector('.chef');
