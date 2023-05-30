@@ -5,4 +5,5 @@ export { forms } from './forms.ts';
 export { mask } from './mask.ts';
 export { checkTextInputs } from './checkTextInputs.ts';
 export { showMoreElements } from './showMoreElements.ts';
-export { calculator } from './calculator.ts'
+export { calculator } from './calculator.ts';
+export { filter } from './filter.ts';
