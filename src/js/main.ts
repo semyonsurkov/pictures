@@ -5,7 +5,9 @@ import {
   mask,
   checkTextInputs,
   showMoreElements,
-  calculator, filter
+  calculator,
+  filter,
+  imagesSize,
 } from './modules';
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -30,4 +32,5 @@ window.addEventListener('DOMContentLoaded', () => {
     result: '.calc-price',
   });
   filter();
+  imagesSize('.sizes-block');
 });
