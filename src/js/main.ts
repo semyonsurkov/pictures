@@ -8,6 +8,7 @@ import {
   calculator,
   filter,
   imagesSize,
+  accordion,
 } from './modules';
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -33,4 +34,5 @@ window.addEventListener('DOMContentLoaded', () => {
   });
   filter();
   imagesSize('.sizes-block');
+  accordion('.accordion-heading');
 });
