@@ -8,3 +8,4 @@ export { showMoreElements } from './showMoreElements.ts';
 export { calculator } from './calculator.ts';
 export { filter } from './filter.ts';
 export { imagesSize } from './imagesSize.ts';
+export { accordion } from './accordion.ts';
