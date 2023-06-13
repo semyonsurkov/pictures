@@ -10,6 +10,7 @@ import {
   imagesSize,
   accordion,
   burger,
+  scrolling,
 } from './modules';
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -37,4 +38,5 @@ window.addEventListener('DOMContentLoaded', () => {
   imagesSize('.sizes-block');
   accordion('.accordion-heading');
   burger('.burger-menu', '.burger');
+  scrolling('.pageup');
 });
