@@ -12,19 +12,20 @@ export const scrolling = (upSelector: string): void => {
   });
 
   let links = document.querySelectorAll(
-      '[href^="#"]'
-    ) as NodeListOf<HTMLAnchorElement>,
-    speed = 0.3;
+    '[href^="#"]'
+  ) as NodeListOf<HTMLAnchorElement>;
+  let speed = 0.3;
 
   links.forEach((link) => {
-    link.addEventListener('click', function (event) {
+    link.addEventListener('click', (event) => {
       event.preventDefault();
 
-      let widthTop = document.documentElement.scrollTop,
-        hash = this.hash,
-        toBlock =
-          document.querySelector(hash)?.getBoundingClientRect().top || 0,
-        start: number | null = null;
+      let widthTop = document.documentElement.scrollTop;
+      let hash = link.hash;
+      let toBlock =
+        (document.querySelector(hash) as HTMLElement)?.getBoundingClientRect()
+          .top || 0;
+      let start: number | null = null;
 
       requestAnimationFrame(step);
 
@@ -33,15 +34,15 @@ export const scrolling = (upSelector: string): void => {
           start = time;
         }
 
-        let progress = time - start,
-          r =
-            toBlock < 0
-              ? Math.max(widthTop - progress / speed, widthTop + toBlock)
-              : Math.min(widthTop + progress / speed, widthTop + toBlock);
+        let progress = time - start;
+        let r =
+          toBlock < 0
+            ? Math.max(widthTop - progress / speed, widthTop + toBlock)
+            : Math.min(widthTop + progress / speed, widthTop + toBlock);
 
         document.documentElement.scrollTo(0, r);
 
-        if (r != widthTop + toBlock) {
+        if (r !== widthTop + toBlock) {
           requestAnimationFrame(step);
         } else {
           location.hash = hash;
