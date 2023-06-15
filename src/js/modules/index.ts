@@ -10,3 +10,4 @@ export { filter } from './filter.ts';
 export { imagesSize } from './imagesSize.ts';
 export { accordion } from './accordion.ts';
 export { burger } from './burger.ts';
+export { scrolling } from './scrolling.ts';
